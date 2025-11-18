@@ -40,6 +40,21 @@ CREATE TABLE OWNER (
 COMMENT ON TABLE OWNER IS 'Property owners';
 
 -- =====================================================
+-- STUDENT
+-- =====================================================
+CREATE TABLE STUDENT (
+    tenant_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR2(100) NOT NULL,
+    email VARCHAR2(100) UNIQUE NOT NULL,
+    phone VARCHAR2(15),
+    university VARCHAR2(150),
+    preferred_city VARCHAR2(100),
+    dob DATE,
+    gender VARCHAR2(20) CHECK (gender IN ('Male','Female','Other')),
+    student_id_type VARCHAR2(50) CHECK (student_id_type IN ('I-20','Driving License','State ID','US Passport'))
+);
+COMMENT ON TABLE STUDENT IS 'Tenants / students';
+-- =====================================================
 -- BOOKING
 -- =====================================================
 CREATE TABLE BOOKING (
