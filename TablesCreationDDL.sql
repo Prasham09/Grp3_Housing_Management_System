@@ -2,10 +2,12 @@
 -- Drop tables safely
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE TOUR CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
-
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE BOOKING CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
-
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE STUDENT CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE OWNER CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE ADMIN CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 
@@ -21,6 +23,37 @@ CREATE TABLE ADMIN (
 );
 COMMENT ON TABLE ADMIN IS 'Site administrators';
 
+-- =====================================================
+-- OWNER
+-- =====================================================
+CREATE TABLE OWNER (
+    owner_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    admin_id NUMBER,
+    name VARCHAR2(100) NOT NULL,
+    email VARCHAR2(100),
+    phone VARCHAR2(15),
+    deed_document_number VARCHAR2(50),
+    verified_status VARCHAR2(20) DEFAULT 'Pending' 
+        CHECK (verified_status IN ('Pending', 'Verified', 'Not Verified')),
+    CONSTRAINT fk_owner_admin FOREIGN KEY (admin_id) REFERENCES ADMIN(admin_id) ON DELETE SET NULL
+);
+COMMENT ON TABLE OWNER IS 'Property owners';
+
+-- =====================================================
+-- STUDENT
+-- =====================================================
+CREATE TABLE STUDENT (
+    tenant_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR2(100) NOT NULL,
+    email VARCHAR2(100) UNIQUE NOT NULL,
+    phone VARCHAR2(15),
+    university VARCHAR2(150),
+    preferred_city VARCHAR2(100),
+    dob DATE,
+    gender VARCHAR2(20) CHECK (gender IN ('Male','Female','Other')),
+    student_id_type VARCHAR2(50) CHECK (student_id_type IN ('I-20','Driving License','State ID','US Passport'))
+);
+COMMENT ON TABLE STUDENT IS 'Tenants / students';
 -- =====================================================
 -- BOOKING
 -- =====================================================
