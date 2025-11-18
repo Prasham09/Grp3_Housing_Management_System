@@ -1,5 +1,8 @@
 
 -- Drop tables safely
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE TOUR CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
+
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE BOOKING CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 
@@ -35,3 +38,24 @@ CREATE TABLE BOOKING (
     CONSTRAINT chk_booking_dates CHECK (start_date IS NULL OR end_date IS NULL OR start_date <= end_date)
 );
 COMMENT ON TABLE BOOKING IS 'Bookings / leases';
+
+
+-- =====================================================
+-- TOUR
+-- =====================================================
+CREATE TABLE TOUR (
+    tour_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    broker_id NUMBER,
+    tenant_id NUMBER,
+    property_id NUMBER NOT NULL,
+    visit_date DATE,
+    feedback VARCHAR2(50) CHECK (feedback IN ('Interested','Not Interested','Still deciding')),
+    reason VARCHAR2(1000),
+    outcome VARCHAR2(255),
+    created_at DATE DEFAULT SYSDATE
+    --,
+    --CONSTRAINT fk_tour_broker FOREIGN KEY (broker_id) REFERENCES BROKER(broker_id) ON DELETE SET NULL,
+    --CONSTRAINT fk_tour_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE SET NULL,
+    --CONSTRAINT fk_tour_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id)
+);
+COMMENT ON TABLE TOUR IS 'Tours / viewings';
