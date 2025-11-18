@@ -4,6 +4,8 @@ BEGIN EXECUTE IMMEDIATE 'DROP TABLE TOUR CASCADE CONSTRAINTS'; EXCEPTION WHEN OT
 /
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE BOOKING CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
+BEGIN EXECUTE IMMEDIATE 'DROP TABLE WISHLIST CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
+/
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE STUDENT CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE OWNER CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
@@ -54,6 +56,21 @@ CREATE TABLE STUDENT (
     student_id_type VARCHAR2(50) CHECK (student_id_type IN ('I-20','Driving License','State ID','US Passport'))
 );
 COMMENT ON TABLE STUDENT IS 'Tenants / students';
+
+-- =====================================================
+-- WISHLIST
+-- =====================================================
+CREATE TABLE WISHLIST (
+    wishlist_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    tenant_id NUMBER NOT NULL,
+    property_id NUMBER NOT NULL,
+    date_added DATE DEFAULT SYSDATE NOT NULL --,
+    --CONSTRAINT fk_wish_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE CASCADE,
+    --CONSTRAINT fk_wish_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id) ON DELETE CASCADE,
+    --CONSTRAINT uq_wishlist_unique UNIQUE (tenant_id, property_id)
+);
+COMMENT ON TABLE WISHLIST IS 'Tenant wishlist';
+
 -- =====================================================
 -- BOOKING
 -- =====================================================
