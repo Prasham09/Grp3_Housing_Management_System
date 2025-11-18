@@ -23,6 +23,22 @@ CREATE TABLE ADMIN (
 COMMENT ON TABLE ADMIN IS 'Site administrators';
 
 -- =====================================================
+-- OWNER
+-- =====================================================
+CREATE TABLE OWNER (
+    owner_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    admin_id NUMBER,
+    name VARCHAR2(100) NOT NULL,
+    email VARCHAR2(100),
+    phone VARCHAR2(15),
+    deed_document_number VARCHAR2(50),
+    verified_status VARCHAR2(20) DEFAULT 'Pending' 
+        CHECK (verified_status IN ('Pending', 'Verified', 'Not Verified')),
+    CONSTRAINT fk_owner_admin FOREIGN KEY (admin_id) REFERENCES ADMIN(admin_id) ON DELETE SET NULL
+);
+COMMENT ON TABLE OWNER IS 'Property owners';
+
+-- =====================================================
 -- BOOKING
 -- =====================================================
 CREATE TABLE BOOKING (
