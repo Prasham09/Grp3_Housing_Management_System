@@ -60,6 +60,26 @@ CREATE TABLE BROKER (
 COMMENT ON TABLE BROKER IS 'Brokers / agents';
 
 -- =====================================================
+-- PROPERTY
+-- =====================================================
+CREATE TABLE PROPERTY (
+    property_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    owner_id NUMBER NOT NULL,
+    broker_id NUMBER,
+    title VARCHAR2(100),
+    address VARCHAR2(200) NOT NULL,
+    city VARCHAR2(100) DEFAULT 'Boston',
+    rent NUMBER(10,2),
+    availability_status VARCHAR2(20) DEFAULT 'Available' CHECK (availability_status IN ('Available','Occupied','Maintenance','Reserved')),
+    type VARCHAR2(50),
+    description VARCHAR2(1000),
+    amenities VARCHAR2(1000),
+    CONSTRAINT fk_property_owner FOREIGN KEY (owner_id) REFERENCES OWNER(owner_id),
+    CONSTRAINT fk_property_broker FOREIGN KEY (broker_id) REFERENCES BROKER(broker_id) ON DELETE SET NULL
+);
+COMMENT ON TABLE PROPERTY IS 'Properties listed in the system';
+
+-- =====================================================
 -- STUDENT
 -- =====================================================
 CREATE TABLE STUDENT (
