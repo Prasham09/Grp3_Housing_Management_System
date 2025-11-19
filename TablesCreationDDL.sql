@@ -82,6 +82,21 @@ CREATE TABLE PROPERTY (
 COMMENT ON TABLE PROPERTY IS 'Properties listed in the system';
 
 -- =====================================================
+-- BROKER_PROPERTY
+-- =====================================================
+CREATE TABLE BROKER_PROPERTY (
+    broker_property_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    broker_id NUMBER NOT NULL,
+    property_id NUMBER NOT NULL,
+    assigned_date DATE DEFAULT SYSDATE NOT NULL,
+    is_active CHAR(1) DEFAULT 'Y' CHECK (is_active IN ('Y','N')),
+    CONSTRAINT uq_bp_unique_assignment UNIQUE (broker_id, property_id, assigned_date),
+    CONSTRAINT fk_bp_broker FOREIGN KEY (broker_id) REFERENCES BROKER(broker_id),
+    CONSTRAINT fk_bp_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id)
+);
+COMMENT ON TABLE BROKER_PROPERTY IS 'Broker assignments history';
+
+-- =====================================================
 -- STUDENT
 -- =====================================================
 CREATE TABLE STUDENT (
