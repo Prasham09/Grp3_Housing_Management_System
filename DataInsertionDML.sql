@@ -15,6 +15,7 @@ INSERT INTO ADMIN (password, email, name, phone) VALUES ('adm10pass','admin10@ho
 -- ===========================
 -- BOOKING (15)
 -- ===========================
+-- Inserting data into Booking table while connecting as an HMS_OPERATOR.
 INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (1,1,'Confirmed',DATE '2025-09-01',DATE '2026-08-31',1);
 INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (2,2,'Confirmed',DATE '2025-09-01',DATE '2026-08-31',2);
 INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (3,4,'Pending',DATE '2026-01-01',DATE '2026-12-31',3);
@@ -30,3 +31,23 @@ INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_d
 INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (3,1,'Pending',DATE '2025-12-01',DATE '2026-11-30',1);
 INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (4,2,'Confirmed',DATE '2025-09-15',DATE '2026-09-14',2);
 INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (5,3,'Confirmed',DATE '2025-10-01',DATE '2026-09-30',1);
+
+
+-- ===========================
+-- TOURS (15)
+-- ===========================
+-- Inserting data into Tours table while connecting as an HMS_OPERATOR.
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (1,1,1,DATE '2025-08-15','Interested','Loved the location and amenities','Booked');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (2,2,2,DATE '2025-08-16','Interested','Perfect size for roommates','Booked');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (3,3,4,DATE '2025-08-17','Still deciding','Need to check other options','Pending decision');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (4,4,3,DATE '2025-08-18','Interested','Close to campus','Added to wishlist');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (5,5,5,DATE '2025-08-19','Not Interested','Too expensive','No booking');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (6,6,6,DATE '2025-07-20','Interested','Great commute','Booked');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (7,7,7,DATE '2025-06-10','Interested','Spacious','Booked');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (8,8,8,DATE '2025-05-05','Still deciding','Neighbors looked noisy','Pending');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (9,9,9,DATE '2025-04-22','Interested','Close to subway','Booked');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (10,10,10,DATE '2025-03-12','Not Interested','Too small','No booking');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (1,11,11,DATE '2025-02-02','Interested','Good for roommates','Booked');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (2,5,2,DATE '2025-09-08','Still deciding','Compare with other units','Pending');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (4,3,1,DATE '2025-09-09','Interested','Good deal','Added to wishlist');
+INSERT INTO HMS_ADMIN.TOUR (broker_id, tenant_id, property_id, visit_date, feedback, reason, outcome) VALUES (6,2,5,DATE '2025-09-10','Not Interested','Too far','No booking');
