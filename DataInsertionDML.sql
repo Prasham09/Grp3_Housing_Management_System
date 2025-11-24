@@ -11,3 +11,22 @@ INSERT INTO ADMIN (password, email, name, phone) VALUES ('adm7pass','admin7@hous
 INSERT INTO ADMIN (password, email, name, phone) VALUES ('adm8pass','admin8@housing.edu','Noah Admin','617-555-0008');
 INSERT INTO ADMIN (password, email, name, phone) VALUES ('adm9pass','admin9@housing.edu','Ava Admin','617-555-0009');
 INSERT INTO ADMIN (password, email, name, phone) VALUES ('adm10pass','admin10@housing.edu','Sophia Admin','617-555-0010');
+
+-- ===========================
+-- BOOKING (15)
+-- ===========================
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (1,1,'Confirmed',DATE '2025-09-01',DATE '2026-08-31',1);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (2,2,'Confirmed',DATE '2025-09-01',DATE '2026-08-31',2);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (3,4,'Pending',DATE '2026-01-01',DATE '2026-12-31',3);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (4,3,'Confirmed',DATE '2025-08-15',DATE '2026-08-14',1);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (5,5,'Cancelled',DATE '2025-09-01',DATE '2026-08-31',1);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (6,6,'Confirmed',DATE '2025-07-01',DATE '2026-06-30',1);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (7,7,'Confirmed',DATE '2025-06-15',DATE '2026-06-14',4);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (8,8,'Pending',DATE '2025-10-01',DATE '2026-09-30',1);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (9,9,'Confirmed',DATE '2025-05-01',DATE '2026-04-30',2);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (10,10,'Confirmed',DATE '2025-08-01',DATE '2026-07-31',3);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (11,11,'Cancelled',DATE '2025-09-01',DATE '2025-12-31',1);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (12,12,'Confirmed',DATE '2025-04-01',DATE '2026-03-31',1);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (3,1,'Pending',DATE '2025-12-01',DATE '2026-11-30',1);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (4,2,'Confirmed',DATE '2025-09-15',DATE '2026-09-14',2);
+INSERT INTO HMS_ADMIN.BOOKING (tenant_id, property_id, status, start_date, end_date, no_of_tenants) VALUES (5,3,'Confirmed',DATE '2025-10-01',DATE '2026-09-30',1);
