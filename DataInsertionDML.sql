@@ -25,6 +25,22 @@ INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_
 INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (10,'Grace Kim','gkim@gmail.com','617-555-2010','D-1010','Verified');
 
 -- ===========================
+-- STUDENTS (12)
+-- ===========================
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Arjun Patel','arjun.patel@northeastern.edu','781-402-8831','Northeastern University','Boston',DATE '1999-04-12','Male','I-20');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Maria Santos','maria.santos@bu.edu','508-221-9942','Boston University','Boston',DATE '1998-09-10','Female','State ID');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Wei Zhang','wei.zhang@harvard.edu','646-881-2301','Harvard University','Cambridge',DATE '1990-06-28','Male','US Passport');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Sara Al-Masri','sara.almasri@tufts.edu','201-992-7400','Tufts University','Medford',DATE '1996-12-02','Female','I-20');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Daniel Kim','daniel.kim@northeastern.edu','774-317-0045','Northeastern University','Boston',DATE '2001-05-14','Male','State ID');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Olivia Chen','olivia.chen@harvard.edu','617-555-3344','Harvard University','Cambridge',DATE '2002-03-22','Female','US Passport');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Mark Johnson','mark.johnson@bu.edu','857-555-4433','Boston University','Boston',DATE '1997-11-11','Male','State ID');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Anita Singh','anita.singh@tufts.edu','781-555-9900','Tufts University','Medford',DATE '1998-02-02','Female','I-20');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Liam Brown','liam.brown@northeastern.edu','617-555-1212','Northeastern University','Boston',DATE '2000-07-07','Male','State ID');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Zoe Miller','zoe.miller@bc.edu','617-555-1313','Boston College','Chestnut Hill',DATE '1999-12-12','Female','State ID');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Pedro Alvarez','pedro.alvarez@umass.edu','978-555-2222','UMass Boston','Boston',DATE '1996-05-06','Male','US Passport');
+INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Nina Gupta','nina.gupta@mit.edu','617-555-1414','MIT','Cambridge',DATE '2003-01-01','Female','US Passport');
+
+-- ===========================
 -- BOOKING (15)
 -- ===========================
 -- Inserting data into Booking table while connecting as an HMS_OPERATOR.
