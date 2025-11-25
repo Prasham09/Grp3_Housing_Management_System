@@ -119,10 +119,10 @@ CREATE TABLE WISHLIST (
     wishlist_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     tenant_id NUMBER NOT NULL,
     property_id NUMBER NOT NULL,
-    date_added DATE DEFAULT SYSDATE NOT NULL --,
-    --CONSTRAINT fk_wish_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE CASCADE,
-    --CONSTRAINT fk_wish_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id) ON DELETE CASCADE,
-    --CONSTRAINT uq_wishlist_unique UNIQUE (tenant_id, property_id)
+    date_added DATE DEFAULT SYSDATE NOT NULL,
+    CONSTRAINT fk_wish_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE CASCADE,
+    CONSTRAINT fk_wish_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id) ON DELETE CASCADE,
+    CONSTRAINT uq_wishlist_unique UNIQUE (tenant_id, property_id)
 );
 COMMENT ON TABLE WISHLIST IS 'Tenant wishlist';
 
@@ -138,8 +138,8 @@ CREATE TABLE BOOKING (
     end_date DATE,
     no_of_tenants NUMBER(3) DEFAULT 1 CHECK (no_of_tenants >= 1),
     created_at DATE DEFAULT SYSDATE,
-    --CONSTRAINT fk_booking_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id),
-    --CONSTRAINT fk_booking_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id),
+    CONSTRAINT fk_booking_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id),
+    CONSTRAINT fk_booking_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id),
     CONSTRAINT chk_booking_dates CHECK (start_date IS NULL OR end_date IS NULL OR start_date <= end_date)
 );
 COMMENT ON TABLE BOOKING IS 'Bookings / leases';
@@ -157,10 +157,9 @@ CREATE TABLE TOUR (
     feedback VARCHAR2(50) CHECK (feedback IN ('Interested','Not Interested','Still deciding')),
     reason VARCHAR2(1000),
     outcome VARCHAR2(255),
-    created_at DATE DEFAULT SYSDATE
-    --,
-    --CONSTRAINT fk_tour_broker FOREIGN KEY (broker_id) REFERENCES BROKER(broker_id) ON DELETE SET NULL,
-    --CONSTRAINT fk_tour_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE SET NULL,
-    --CONSTRAINT fk_tour_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id)
+    created_at DATE DEFAULT SYSDATE,
+    CONSTRAINT fk_tour_broker FOREIGN KEY (broker_id) REFERENCES BROKER(broker_id) ON DELETE SET NULL,
+    CONSTRAINT fk_tour_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE SET NULL,
+    CONSTRAINT fk_tour_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id)
 );
 COMMENT ON TABLE TOUR IS 'Tours / viewings';
