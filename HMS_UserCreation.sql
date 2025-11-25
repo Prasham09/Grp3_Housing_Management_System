@@ -1,7 +1,7 @@
 show user;
 
 
---Drop if already exists (optional)
+--Drop if already exists 
 DROP USER HMS_ADMIN CASCADE;
 DROP USER HMSAdmin CASCADE;
 DROP USER HMS_OPERATOR CASCADE;
