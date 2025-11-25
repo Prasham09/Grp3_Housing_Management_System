@@ -12,6 +12,18 @@ INSERT INTO ADMIN (password, email, name, phone) VALUES ('adm8pass','admin8@hous
 INSERT INTO ADMIN (password, email, name, phone) VALUES ('adm9pass','admin9@housing.edu','Ava Admin','617-555-0009');
 INSERT INTO ADMIN (password, email, name, phone) VALUES ('adm10pass','admin10@housing.edu','Sophia Admin','617-555-0010');
 
+-- OWNERS (10)
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (1,'James Peterson','jpeterson@gmail.com','617-555-2001','D-1001','Verified');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (2,'Linda Chen','lchen@gmail.com','617-555-2002','D-1002','Verified');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (3,'Christopher Davis','cdavis@gmail.com','617-555-2003','D-1003','Pending');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (4,'Patricia Martinez','pmartinez@gmail.com','617-555-2004','D-1004','Verified');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (5,'Thomas Anderson','tanderson@gmail.com','617-555-2005','D-1005','Not Verified');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (6,'Olivia Brown','obrown@gmail.com','617-555-2006','D-1006','Verified');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (7,'Daniel Green','dgreen@gmail.com','617-555-2007','D-1007','Verified');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (8,'Sanjay Kumar','skumar@gmail.com','617-555-2008','D-1008','Pending');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (9,'Hannah Lee','hlee@gmail.com','617-555-2009','D-1009','Verified');
+INSERT INTO OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (10,'Grace Kim','gkim@gmail.com','617-555-2010','D-1010','Verified');
+
 -- ===========================
 -- BOOKING (15)
 -- ===========================
