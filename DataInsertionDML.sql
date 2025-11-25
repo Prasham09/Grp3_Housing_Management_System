@@ -41,6 +41,30 @@ INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender
 INSERT INTO STUDENT (name, email, phone, university, preferred_city, dob, gender, student_id_type) VALUES ('Nina Gupta','nina.gupta@mit.edu','617-555-1414','MIT','Cambridge',DATE '2003-01-01','Female','US Passport');
 
 -- ===========================
+-- WISHLIST (20)
+-- ===========================
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (1,1,DATE '2025-09-01');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (1,3,DATE '2025-09-02');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (2,2,DATE '2025-09-03');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (3,4,DATE '2025-09-04');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (4,3,DATE '2025-09-05');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (5,6,DATE '2025-08-10');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (6,11,DATE '2025-07-20');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (7,8,DATE '2025-06-11');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (8,7,DATE '2025-05-01');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (9,5,DATE '2025-04-22');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (10,9,DATE '2025-03-13');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (11,12,DATE '2025-02-02');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (12,10,DATE '2025-01-15');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (2,11,DATE '2025-09-08');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (3,1,DATE '2025-09-09');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (4,2,DATE '2025-09-10');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (5,3,DATE '2025-09-11');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (6,4,DATE '2025-09-12');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (7,5,DATE '2025-09-13');
+INSERT INTO WISHLIST (tenant_id, property_id, date_added) VALUES (8,6,DATE '2025-09-14');
+
+-- ===========================
 -- BOOKING (15)
 -- ===========================
 -- Inserting data into Booking table while connecting as an HMS_OPERATOR.
