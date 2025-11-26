@@ -4,14 +4,14 @@ show user;
 DELETE FROM HMS_ADMIN.TOUR;
 DELETE FROM HMS_ADMIN.BOOKING;
 DELETE FROM HMS_ADMIN.WISHLIST;
---DELETE FROM BROKER_PROPERTY;
+DELETE FROM BROKER_PROPERTY;
 
 -- Delete from intermediate tables
---DELETE FROM PROPERTY;
+DELETE FROM PROPERTY;
 DELETE FROM HMS_ADMIN.STUDENT;
 
 -- Delete from parent tables
---DELETE FROM BROKER;
+DELETE FROM BROKER;
 DELETE FROM HMS_ADMIN.OWNER;
 DELETE FROM HMS_ADMIN.ADMIN;
 
@@ -27,6 +27,18 @@ INSERT INTO HMS_ADMIN.ADMIN (password, email, name, phone) VALUES ('adm8pass','a
 INSERT INTO HMS_ADMIN.ADMIN (password, email, name, phone) VALUES ('adm9pass','admin9@housing.edu','Ava Admin','617-555-0009');
 INSERT INTO HMS_ADMIN.ADMIN (password, email, name, phone) VALUES ('adm10pass','admin10@housing.edu','Sophia Admin','617-555-0010');
 
+-- BROKERS (10) - assign admin_id values 1..10
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (1,'Michael Roberts','mroberts@bostonbrokers.com','617-555-1001','LIC-1001');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (2,'Jennifer Lee','jlee@bostonbrokers.com','617-555-1002','LIC-1002');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (3,'David Chang','dchang@bostonbrokers.com','617-555-1003','LIC-1003');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (4,'Maria Gonzalez','mgonzalez@bostonbrokers.com','617-555-1004','LIC-1004');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (5,'Robert Williams','rwilliams@bostonbrokers.com','617-555-1005','LIC-1005');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (6,'Aisha Khan','akhan@bostonbrokers.com','617-555-1006','LIC-1006');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (7,'Carlos Romano','cromano@bostonbrokers.com','617-555-1007','LIC-1007');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (8,'Priya Patel','ppetel@bostonbrokers.com','617-555-1008','LIC-1008');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (9,'Liam O''Connor','loconnor@bostonbrokers.com','617-555-1009','LIC-1009');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (10,'Emily Park','epark@bostonbrokers.com','617-555-1010','LIC-1010');
+
 -- OWNERS (10)
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (1,'James Peterson','jpeterson@gmail.com','617-555-2001','D-1001','Verified');
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (2,'Linda Chen','lchen@gmail.com','617-555-2002','D-1002','Verified');
@@ -38,6 +50,72 @@ INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number,
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (8,'Sanjay Kumar','skumar@gmail.com','617-555-2008','D-1008','Pending');
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (9,'Hannah Lee','hlee@gmail.com','617-555-2009','D-1009','Verified');
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (10,'Grace Kim','gkim@gmail.com','617-555-2010','D-1010','Verified');
+
+-- PROPERTIES (12) - varied neighborhoods & near universities
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (1,1,'Cozy Studio - Back Bay','234 Newbury St, Back Bay, Boston','Boston',2200.00,'Available','Studio','Modern studio with city views','WiFi,Laundry,Heating');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (1,2,'2BR Near BU Campus','567 Commonwealth Ave, Fenway','Boston',3500.00,'Available','2 Bedroom','Spacious apt near Boston University','Parking,WiFi,Dishwasher');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (2,3,'1BR Cambridge - Near Harvard','89 Harvard St, Cambridge','Cambridge',2800.00,'Available','1 Bedroom','Renovated apt near Harvard Square','AC,Heating,Hardwood floors');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (3,4,'Shared 3BR Allston - Student','145 Brighton Ave, Allston','Boston',1400.00,'Available','3 Bedroom','Rooms suitable for students, near public transit','Laundry,WiFi,Storage');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (4,5,'Luxury 2BR Seaport','777 Seaport Blvd, Seaport','Boston',4500.00,'Occupied','2 Bedroom','Waterfront luxury living','Gym,Pool,Concierge');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (5,6,'Studio - Fenway/Kenmore','12 Ipswich St, Fenway','Boston',2000.00,'Available','Studio','Compact studio, walk to campus','WiFi,Heat');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (6,7,'3BR Family Home - Brookline','45 Beacon St, Brookline','Brookline',4200.00,'Available','3 Bedroom','Lovely family house near shops','Garage,Backyard');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (7,8,'1BR Near Tufts','10 College Ave, Medford','Medford',2300.00,'Available','1 Bedroom','Close to Tufts University','Parking,Heat,WiFi');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (8,9,'2BR - Somerville','200 Highland Ave, Somerville','Somerville',3100.00,'Available','2 Bedroom','Nice neighborhood, short commute','Laundry,AC');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (9,10,'4BR House - Jamaica Plain','88 Centre St, Jamaica Plain','Boston',3800.00,'Available','4 Bedroom','Spacious house for groups','Yard,Storage');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (10,1,'1BR Mid-Cambridge','123 Mass Ave, Cambridge','Cambridge',2500.00,'Available','1 Bedroom','Small, quiet building','Heat,Water included');
+
+INSERT INTO PROPERTY (owner_id, broker_id, title, address, city, rent, availability_status, type, description, amenities)
+VALUES (5,2,'Studio - Near Northeastern','40 St. Botolph St, Fenway','Boston',2100.00,'Available','Studio','Close to Northeastern University','WiFi,Close to transit');
+
+-- ===========================
+-- BROKER_PROPERTY (25)
+-- ===========================
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (1,1,DATE '2024-01-15','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (2,1,DATE '2024-02-01','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (1,1,DATE '2025-01-15','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (2,2,DATE '2024-05-10','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (3,2,DATE '2024-06-01','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (3,3,DATE '2024-02-20','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (4,4,DATE '2023-09-01','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (5,4,DATE '2024-03-01','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (6,5,DATE '2024-04-10','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (7,5,DATE '2024-06-15','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (5,5,DATE '2025-02-10','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (8,6,DATE '2024-07-01','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (9,7,DATE '2024-08-05','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (10,8,DATE '2024-09-15','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (2,9,DATE '2024-10-02','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (1,10,DATE '2025-01-04','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (3,11,DATE '2024-03-22','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (4,12,DATE '2024-02-12','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (5,6,DATE '2023-12-01','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (6,7,DATE '2023-11-11','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (7,8,DATE '2024-01-10','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (8,9,DATE '2024-05-05','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (9,10,DATE '2024-06-06','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (10,11,DATE '2024-07-07','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (1,12,DATE '2025-02-10','Y');
 
 -- ===========================
 -- STUDENTS (12)
