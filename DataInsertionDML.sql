@@ -27,6 +27,18 @@ INSERT INTO HMS_ADMIN.ADMIN (password, email, name, phone) VALUES ('adm8pass','a
 INSERT INTO HMS_ADMIN.ADMIN (password, email, name, phone) VALUES ('adm9pass','admin9@housing.edu','Ava Admin','617-555-0009');
 INSERT INTO HMS_ADMIN.ADMIN (password, email, name, phone) VALUES ('adm10pass','admin10@housing.edu','Sophia Admin','617-555-0010');
 
+-- BROKERS (10) - assign admin_id values 1..10
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (1,'Michael Roberts','mroberts@bostonbrokers.com','617-555-1001','LIC-1001');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (2,'Jennifer Lee','jlee@bostonbrokers.com','617-555-1002','LIC-1002');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (3,'David Chang','dchang@bostonbrokers.com','617-555-1003','LIC-1003');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (4,'Maria Gonzalez','mgonzalez@bostonbrokers.com','617-555-1004','LIC-1004');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (5,'Robert Williams','rwilliams@bostonbrokers.com','617-555-1005','LIC-1005');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (6,'Aisha Khan','akhan@bostonbrokers.com','617-555-1006','LIC-1006');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (7,'Carlos Romano','cromano@bostonbrokers.com','617-555-1007','LIC-1007');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (8,'Priya Patel','ppetel@bostonbrokers.com','617-555-1008','LIC-1008');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (9,'Liam O''Connor','loconnor@bostonbrokers.com','617-555-1009','LIC-1009');
+INSERT INTO BROKER (admin_id, name, email, phone, broker_license_number) VALUES (10,'Emily Park','epark@bostonbrokers.com','617-555-1010','LIC-1010');
+
 -- OWNERS (10)
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (1,'James Peterson','jpeterson@gmail.com','617-555-2001','D-1001','Verified');
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (2,'Linda Chen','lchen@gmail.com','617-555-2002','D-1002','Verified');
