@@ -52,4 +52,3 @@ GRANT CREATE SESSION TO HMS_OPERATOR;
 
 COMMIT;
 --------------------------------------------------------------
-
