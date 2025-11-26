@@ -4,7 +4,7 @@ show user;
 DELETE FROM HMS_ADMIN.TOUR;
 DELETE FROM HMS_ADMIN.BOOKING;
 DELETE FROM HMS_ADMIN.WISHLIST;
---DELETE FROM BROKER_PROPERTY;
+DELETE FROM BROKER_PROPERTY;
 
 -- Delete from intermediate tables
 --DELETE FROM PROPERTY;
@@ -38,6 +38,35 @@ INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number,
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (8,'Sanjay Kumar','skumar@gmail.com','617-555-2008','D-1008','Pending');
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (9,'Hannah Lee','hlee@gmail.com','617-555-2009','D-1009','Verified');
 INSERT INTO HMS_ADMIN.OWNER (admin_id, name, email, phone, deed_document_number, verified_status) VALUES (10,'Grace Kim','gkim@gmail.com','617-555-2010','D-1010','Verified');
+
+-- ===========================
+-- BROKER_PROPERTY (25)
+-- ===========================
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (1,1,DATE '2024-01-15','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (2,1,DATE '2024-02-01','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (1,1,DATE '2025-01-15','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (2,2,DATE '2024-05-10','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (3,2,DATE '2024-06-01','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (3,3,DATE '2024-02-20','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (4,4,DATE '2023-09-01','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (5,4,DATE '2024-03-01','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (6,5,DATE '2024-04-10','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (7,5,DATE '2024-06-15','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (5,5,DATE '2025-02-10','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (8,6,DATE '2024-07-01','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (9,7,DATE '2024-08-05','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (10,8,DATE '2024-09-15','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (2,9,DATE '2024-10-02','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (1,10,DATE '2025-01-04','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (3,11,DATE '2024-03-22','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (4,12,DATE '2024-02-12','Y');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (5,6,DATE '2023-12-01','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (6,7,DATE '2023-11-11','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (7,8,DATE '2024-01-10','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (8,9,DATE '2024-05-05','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (9,10,DATE '2024-06-06','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (10,11,DATE '2024-07-07','N');
+INSERT INTO BROKER_PROPERTY (broker_id, property_id, assigned_date, is_active) VALUES (1,12,DATE '2025-02-10','Y');
 
 -- ===========================
 -- STUDENTS (12)
