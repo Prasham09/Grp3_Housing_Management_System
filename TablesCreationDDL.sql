@@ -166,3 +166,5 @@ CREATE TABLE TOUR (
     CONSTRAINT fk_tour_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id)
 );
 COMMENT ON TABLE TOUR IS 'Tours / viewings';
+
+COMMIT;
