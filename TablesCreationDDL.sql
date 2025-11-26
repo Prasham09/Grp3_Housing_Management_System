@@ -1,5 +1,7 @@
 show user;
 
+SET SERVEROUTPUT ON;
+
 -- Drop tables safely
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE TOUR CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
@@ -24,7 +26,7 @@ BEGIN EXECUTE IMMEDIATE 'DROP TABLE ADMIN CASCADE CONSTRAINTS'; EXCEPTION WHEN O
 -- ADMIN
 -- =====================================================
 CREATE TABLE ADMIN (
-    admin_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    admin_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     password VARCHAR2(255) NOT NULL,
     email VARCHAR2(100) UNIQUE NOT NULL,
     name VARCHAR2(100) NOT NULL,
@@ -36,7 +38,7 @@ COMMENT ON TABLE ADMIN IS 'Site administrators';
 -- OWNER
 -- =====================================================
 CREATE TABLE OWNER (
-    owner_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    owner_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     admin_id NUMBER,
     name VARCHAR2(100) NOT NULL,
     email VARCHAR2(100),
@@ -52,7 +54,7 @@ COMMENT ON TABLE OWNER IS 'Property owners';
 -- BROKER
 -- =====================================================
 CREATE TABLE BROKER (
-    broker_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    broker_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     admin_id NUMBER,
     name VARCHAR2(100) NOT NULL,
     email VARCHAR2(100) UNIQUE NOT NULL,
@@ -66,7 +68,7 @@ COMMENT ON TABLE BROKER IS 'Brokers / agents';
 -- PROPERTY
 -- =====================================================
 CREATE TABLE PROPERTY (
-    property_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    property_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     owner_id NUMBER NOT NULL,
     broker_id NUMBER,
     title VARCHAR2(100),
@@ -86,7 +88,7 @@ COMMENT ON TABLE PROPERTY IS 'Properties listed in the system';
 -- BROKER_PROPERTY
 -- =====================================================
 CREATE TABLE BROKER_PROPERTY (
-    broker_property_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    broker_property_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     broker_id NUMBER NOT NULL,
     property_id NUMBER NOT NULL,
     assigned_date DATE DEFAULT SYSDATE NOT NULL,
@@ -101,7 +103,7 @@ COMMENT ON TABLE BROKER_PROPERTY IS 'Broker assignments history';
 -- STUDENT
 -- =====================================================
 CREATE TABLE STUDENT (
-    tenant_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    tenant_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     name VARCHAR2(100) NOT NULL,
     email VARCHAR2(100) UNIQUE NOT NULL,
     phone VARCHAR2(15),
@@ -117,7 +119,7 @@ COMMENT ON TABLE STUDENT IS 'Tenants / students';
 -- WISHLIST
 -- =====================================================
 CREATE TABLE WISHLIST (
-    wishlist_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    wishlist_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     tenant_id NUMBER NOT NULL,
     property_id NUMBER NOT NULL,
     date_added DATE DEFAULT SYSDATE NOT NULL,
@@ -131,7 +133,7 @@ COMMENT ON TABLE WISHLIST IS 'Tenant wishlist';
 -- BOOKING
 -- =====================================================
 CREATE TABLE BOOKING (
-    booking_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    booking_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     tenant_id NUMBER NOT NULL,
     property_id NUMBER NOT NULL,
     status VARCHAR2(20) DEFAULT 'Pending' CHECK (status IN ('Pending','Confirmed','Cancelled','Completed')),
@@ -145,12 +147,11 @@ CREATE TABLE BOOKING (
 );
 COMMENT ON TABLE BOOKING IS 'Bookings / leases';
 
-
 -- =====================================================
 -- TOUR
 -- =====================================================
 CREATE TABLE TOUR (
-    tour_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    tour_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     broker_id NUMBER,
     tenant_id NUMBER,
     property_id NUMBER NOT NULL,
