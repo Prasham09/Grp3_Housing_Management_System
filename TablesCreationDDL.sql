@@ -1,3 +1,6 @@
+show user;
+
+SET SERVEROUTPUT ON;
 
 -- Drop tables safely
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE TOUR CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
@@ -18,12 +21,13 @@ BEGIN EXECUTE IMMEDIATE 'DROP TABLE OWNER CASCADE CONSTRAINTS'; EXCEPTION WHEN O
 /
 BEGIN EXECUTE IMMEDIATE 'DROP TABLE ADMIN CASCADE CONSTRAINTS'; EXCEPTION WHEN OTHERS THEN NULL; END;
 /
+COMMIT;
 
 -- =====================================================
--- ADMIN
+-- ADMIN (IDs: 1, 2, 3, ...)
 -- =====================================================
 CREATE TABLE ADMIN (
-    admin_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    admin_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     password VARCHAR2(255) NOT NULL,
     email VARCHAR2(100) UNIQUE NOT NULL,
     name VARCHAR2(100) NOT NULL,
@@ -32,10 +36,10 @@ CREATE TABLE ADMIN (
 COMMENT ON TABLE ADMIN IS 'Site administrators';
 
 -- =====================================================
--- OWNER
+-- OWNER (IDs: 1000, 1001, 1002, ...)
 -- =====================================================
 CREATE TABLE OWNER (
-    owner_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    owner_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1000 INCREMENT BY 1) PRIMARY KEY,
     admin_id NUMBER,
     name VARCHAR2(100) NOT NULL,
     email VARCHAR2(100),
@@ -48,10 +52,10 @@ CREATE TABLE OWNER (
 COMMENT ON TABLE OWNER IS 'Property owners';
 
 -- =====================================================
--- BROKER
+-- BROKER (IDs: 100, 101, 102, ...)
 -- =====================================================
 CREATE TABLE BROKER (
-    broker_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    broker_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 100 INCREMENT BY 1) PRIMARY KEY,
     admin_id NUMBER,
     name VARCHAR2(100) NOT NULL,
     email VARCHAR2(100) UNIQUE NOT NULL,
@@ -62,10 +66,10 @@ CREATE TABLE BROKER (
 COMMENT ON TABLE BROKER IS 'Brokers / agents';
 
 -- =====================================================
--- PROPERTY
+-- PROPERTY (IDs: 2000, 2001, 2002, ...)
 -- =====================================================
 CREATE TABLE PROPERTY (
-    property_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    property_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 2000 INCREMENT BY 1) PRIMARY KEY,
     owner_id NUMBER NOT NULL,
     broker_id NUMBER,
     title VARCHAR2(100),
@@ -82,10 +86,10 @@ CREATE TABLE PROPERTY (
 COMMENT ON TABLE PROPERTY IS 'Properties listed in the system';
 
 -- =====================================================
--- BROKER_PROPERTY
+-- BROKER_PROPERTY (IDs: 1, 2, 3, ...)
 -- =====================================================
 CREATE TABLE BROKER_PROPERTY (
-    broker_property_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    broker_property_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     broker_id NUMBER NOT NULL,
     property_id NUMBER NOT NULL,
     assigned_date DATE DEFAULT SYSDATE NOT NULL,
@@ -97,10 +101,10 @@ CREATE TABLE BROKER_PROPERTY (
 COMMENT ON TABLE BROKER_PROPERTY IS 'Broker assignments history';
 
 -- =====================================================
--- STUDENT
+-- STUDENT (IDs: 10000, 10001, 10002, ...)
 -- =====================================================
 CREATE TABLE STUDENT (
-    tenant_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    tenant_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 10000 INCREMENT BY 1) PRIMARY KEY,
     name VARCHAR2(100) NOT NULL,
     email VARCHAR2(100) UNIQUE NOT NULL,
     phone VARCHAR2(15),
@@ -113,24 +117,24 @@ CREATE TABLE STUDENT (
 COMMENT ON TABLE STUDENT IS 'Tenants / students';
 
 -- =====================================================
--- WISHLIST
+-- WISHLIST (IDs: 1, 2, 3, ...)
 -- =====================================================
 CREATE TABLE WISHLIST (
-    wishlist_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    wishlist_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     tenant_id NUMBER NOT NULL,
     property_id NUMBER NOT NULL,
-    date_added DATE DEFAULT SYSDATE NOT NULL --,
-    --CONSTRAINT fk_wish_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE CASCADE,
-    --CONSTRAINT fk_wish_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id) ON DELETE CASCADE,
-    --CONSTRAINT uq_wishlist_unique UNIQUE (tenant_id, property_id)
+    date_added DATE DEFAULT SYSDATE NOT NULL,
+    CONSTRAINT fk_wish_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE CASCADE,
+    CONSTRAINT fk_wish_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id) ON DELETE CASCADE,
+    CONSTRAINT uq_wishlist_unique UNIQUE (tenant_id, property_id)
 );
 COMMENT ON TABLE WISHLIST IS 'Tenant wishlist';
 
 -- =====================================================
--- BOOKING
+-- BOOKING (IDs: 1, 2, 3, ...)
 -- =====================================================
 CREATE TABLE BOOKING (
-    booking_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    booking_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     tenant_id NUMBER NOT NULL,
     property_id NUMBER NOT NULL,
     status VARCHAR2(20) DEFAULT 'Pending' CHECK (status IN ('Pending','Confirmed','Cancelled','Completed')),
@@ -138,18 +142,17 @@ CREATE TABLE BOOKING (
     end_date DATE,
     no_of_tenants NUMBER(3) DEFAULT 1 CHECK (no_of_tenants >= 1),
     created_at DATE DEFAULT SYSDATE,
-    --CONSTRAINT fk_booking_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id),
-    --CONSTRAINT fk_booking_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id),
+    CONSTRAINT fk_booking_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id),
+    CONSTRAINT fk_booking_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id),
     CONSTRAINT chk_booking_dates CHECK (start_date IS NULL OR end_date IS NULL OR start_date <= end_date)
 );
 COMMENT ON TABLE BOOKING IS 'Bookings / leases';
 
-
 -- =====================================================
--- TOUR
+-- TOUR (IDs: 1, 2, 3, ...)
 -- =====================================================
 CREATE TABLE TOUR (
-    tour_id NUMBER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    tour_id NUMBER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1) PRIMARY KEY,
     broker_id NUMBER,
     tenant_id NUMBER,
     property_id NUMBER NOT NULL,
@@ -157,10 +160,11 @@ CREATE TABLE TOUR (
     feedback VARCHAR2(50) CHECK (feedback IN ('Interested','Not Interested','Still deciding')),
     reason VARCHAR2(1000),
     outcome VARCHAR2(255),
-    created_at DATE DEFAULT SYSDATE
-    --,
-    --CONSTRAINT fk_tour_broker FOREIGN KEY (broker_id) REFERENCES BROKER(broker_id) ON DELETE SET NULL,
-    --CONSTRAINT fk_tour_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE SET NULL,
-    --CONSTRAINT fk_tour_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id)
+    created_at DATE DEFAULT SYSDATE,
+    CONSTRAINT fk_tour_broker FOREIGN KEY (broker_id) REFERENCES BROKER(broker_id) ON DELETE SET NULL,
+    CONSTRAINT fk_tour_student FOREIGN KEY (tenant_id) REFERENCES STUDENT(tenant_id) ON DELETE SET NULL,
+    CONSTRAINT fk_tour_property FOREIGN KEY (property_id) REFERENCES PROPERTY(property_id)
 );
 COMMENT ON TABLE TOUR IS 'Tours / viewings';
+
+COMMIT;
